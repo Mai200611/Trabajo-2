@@ -1,1 +1,4 @@
-<Solution />
+<Solution>
+  <Project Path="AutoFleet.API/AutoFleet.API.csproj" />
+  <Project Path="AutoFleet.Shared/AutoFleet.Shared.csproj" />
+</Solution>
