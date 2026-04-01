@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="AutoFleet.API/AutoFleet.API.csproj" />
+  <Project Path="AutoFleet.Shared/AutoFleet.Shared.csproj" />
+  <Project Path="AutoFleet.Web/AutoFleet.Web.csproj" Id="3aba5d33-5bfc-40aa-852b-2b0de36d1f95" />
+</Solution>
