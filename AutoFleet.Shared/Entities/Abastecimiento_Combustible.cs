@@ -8,7 +8,7 @@ namespace AutoFleet.Shared.Entities
 {
     public class Abastecimiento_Combustible
     {
-        [Key]
+        
         [Display(Name = "Vehiculo")]
         [Required(ErrorMessage = "El campo Vehiculo es obligatorio.")]
         public int Id_Vehiculo { get; set; }
