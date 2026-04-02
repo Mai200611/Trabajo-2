@@ -49,5 +49,6 @@ namespace AutoFleet.Shared.Entities
         public float KilometrajeActual { get; set; }
 
         public ICollection<Recorrido> Recorridos { get; set; }
+        public virtual ICollection<Mantenimiento> Mantenimientos { get; set; }
     }
 }
