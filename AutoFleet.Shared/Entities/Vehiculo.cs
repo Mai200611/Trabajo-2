@@ -21,5 +21,7 @@ namespace AutoFleet.Shared.Entities
         public string EstadoOperativo { get; set; }
 
         public float KilometrajeActual { get; set; }
+
+        public ICollection<Recorrido> Recorridos { get; set; }
     }
 }
