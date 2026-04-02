@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AutoFleet.Shared.Entities
 {
-    internal class Mantenimiento
+    public class Mantenimiento
     {
     }
 }

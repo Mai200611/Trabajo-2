@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AutoFleet.Shared.Entities
 {
-    internal class Vehiculo
+    public class Vehiculo
     {
         public int Id { get; set; }
 
