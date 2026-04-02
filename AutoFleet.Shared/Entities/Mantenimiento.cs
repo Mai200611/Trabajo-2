@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace AutoFleet.Shared.Entities
 {
-    internal class Mantenimientos
+    internal class Mantenimiento
     {
         [Display(Name = "Vehiculo")]
         [Required(ErrorMessage = "El campo Vehiculo es obligatorio.")]
