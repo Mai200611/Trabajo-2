@@ -26,6 +26,8 @@ namespace AutoFleet.Shared.Entities
 
         public DateTime? ProximoMantenimiento { get; set; }
 
+        // Relaciones
+
         [Required]
         public int VehiculoId { get; set; }
 

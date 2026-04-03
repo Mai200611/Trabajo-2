@@ -43,6 +43,9 @@ namespace AutoFleet.Shared.Entities
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string? Observaciones { get; set; } //Opcional
 
+
+        // Relaciones
+
         [JsonIgnore]
         public Ruta Ruta { get; set; }
 

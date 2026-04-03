@@ -31,12 +31,12 @@ namespace AutoFleet.Shared.Entities
         [Display(Name = "Número de Licencia")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         [MaxLength(20, ErrorMessage = "El campo {0} no puede exceder los {1} caracteres.")]
-        public string LicenciaNumero { get; set; } = string.Empty;
+        public string LicenciaNumero { get; set; }
 
         [Display(Name = "Categoría de Licencia")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         [MaxLength(20, ErrorMessage = "El campo {0} no puede exceder los {1} caracteres.")]
-        public string LicenciaCategoria { get; set; } = string.Empty;
+        public string LicenciaCategoria { get; set; }
 
         [Display(Name = "Fecha de Vencimiento de Licencia")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]

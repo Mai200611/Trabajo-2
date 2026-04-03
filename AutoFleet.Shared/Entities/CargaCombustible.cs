@@ -38,8 +38,8 @@ namespace AutoFleet.Shared.Entities
         public string Gasolinera { get; set; }
 
 
-        // Para indicar a que columna de que tabla referencia VehiculoId
-        // (No toca agregar [ForeignKey] porque EF detecta VehiculoId)
+        // Relaciones
+
         [JsonIgnore]
         public Vehiculo Vehiculo { get; set; }
 
