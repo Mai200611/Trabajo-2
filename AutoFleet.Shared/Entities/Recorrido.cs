@@ -66,9 +66,5 @@ namespace AutoFleet.Shared.Entities
         [Display(Name = "Codigo del Conductor")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public int ConductorId { get; set; }
-
-
-
-
     }
 }

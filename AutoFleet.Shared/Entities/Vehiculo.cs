@@ -48,6 +48,7 @@ namespace AutoFleet.Shared.Entities
         [Range(0, 1000000, ErrorMessage = "El campo {0} debe estar entre {1} y {2} km.")] //Normalmente el contador/odometro llega hasta 1 millon
         public float KilometrajeActual { get; set; }
 
+
         // Relaciones
 
         public ICollection<Recorrido> Recorridos { get; set; }
