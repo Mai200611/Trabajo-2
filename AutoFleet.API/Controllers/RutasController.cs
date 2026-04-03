@@ -38,7 +38,7 @@ namespace AutoFleet.API.Controllers
         {
             _context.Rutas.Add(ruta);
             await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetRuta), new { id = ruta.CodRuta }, ruta);
+            return CreatedAtAction(nameof(GetRuta), new { id = ruta.Id }, ruta);
         }
 
     }

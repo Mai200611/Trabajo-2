@@ -11,7 +11,7 @@ namespace AutoFleet.Shared.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Display(Name = "Código de la ruta")]
-        public int CodRuta { get; set; }
+        public int Id { get; set; }
 
         [Display(Name = "Nombre de la ruta")]
         [MaxLength(50, ErrorMessage = "The {0} field can not have more than {1} characters.")]

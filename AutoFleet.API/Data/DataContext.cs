@@ -20,14 +20,14 @@ namespace AutoFleet.API.Data
         {
             modelBuilder.Entity<Ruta>(entity =>
             {
-                entity.HasKey(r => r.CodRuta);
-                entity.Property(r => r.CodRuta).ValueGeneratedOnAdd();
+                entity.HasKey(r => r.Id);
+                entity.Property(r => r.Id).ValueGeneratedOnAdd();
             });
 
             modelBuilder.Entity<Recorrido>(entity =>
             {
-                entity.HasKey(r => r.CodigoRecorrido);
-                entity.Property(r => r.CodigoRecorrido).ValueGeneratedOnAdd();
+                entity.HasKey(r => r.Id);
+                entity.Property(r => r.Id).ValueGeneratedOnAdd();
             });
 
             base.OnModelCreating(modelBuilder);
