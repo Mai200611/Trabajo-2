@@ -3,42 +3,48 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace AutoFleet.Shared.Entities
 {
     public class CargaCombustible
     {
-        
-        [Display(Name = "Vehiculo")]
-        [Required(ErrorMessage = "El campo Vehiculo es obligatorio.")]
-        public int Id_Vehiculo { get; set; }
-        [ForeignKey("Id_Vehiculo")] //FK de Vehiculo
-        public Vehiculo? Vehiculo { get; set; }
 
-        [DataType(DataType.Date)] //Fecha 
-        [Column(TypeName = "date")]
-        [Display(Name = "Fecha de Uso")]
-        public DateTime? Fecha { get; set; }
+        public int Id { get; set; }
+
+        [Display(Name = "Fecha de Carga/Tanqueo")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
+        public DateTime Fecha { get; set; }
 
         [Display(Name = "Cantidad de Combustible (L)")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        [Range(0.01, 100.0, ErrorMessage = "La cantidad de combustible debe Estar entre 0.01L y 100L (Litros).")]
-        public double Cantidad_Combustible { get; set; }  //Cantidad de combustible en litros
-         
-        [Display(Name = "Costo (COP)")]
+        [Range(0.01, 1200.0, ErrorMessage = "La {0} debe Estar entre {1} Litros y {2}.")]
+        public decimal CantidadCombustible { get; set; }
+
+        [Display(Name = "Costo")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        [Range(5000, 500000.0, ErrorMessage = "El costo total debe estar entre 5000 y 500000 (COP).")] //Precio Maximo de 500.000 COP para evitar errores de digitación
+        [Range(0, double.MaxValue, ErrorMessage = "El {0} debe estar entre {1} y {2}.")] //de 0 a valor maximo para que no agarre valores negativos
         [Column(TypeName = "decimal(18, 2)")]
-        public decimal Costo_Total { get; set; } //Costo total  abastecimiento (COP)
+        public decimal CostoTotal { get; set; }
 
         [Display(Name = "Kilometraje (Km)")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        [Range(0.0, 1500000.0, ErrorMessage = "El kilometraje debe estar entre 0.0 y 1,500,000 km.")]
-        public double Kilometraje { get; set; } //Kilometraje del vehículo al momento del abastecimiento
+        [Range(0.0, 1500000.0, ErrorMessage = "El campo de {0} debe estar entre {1} y {2}.")]
+        public int Kilometraje { get; set; }
 
         [Display(Name = "Gasolinera")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        [StringLength(12, ErrorMessage = "El NIT de la gasolinera no puede exceder los 12 caracteres.")]
-        public string Gasolinera { get; set; } //NIT de la gasolinera donde se realizó el abastecimiento
+        [StringLength(80, ErrorMessage = "El campo de {0} no puede superar los {1} caracteres.")]
+        public string Gasolinera { get; set; }
+
+
+        // Para indicar a que columna de que tabla referencia VehiculoId
+        // (No toca agregar [ForeignKey] porque EF detecta VehiculoId)
+        [JsonIgnore]
+        public Vehiculo Vehiculo { get; set; }
+
+        [Display(Name = "Id Vehiculo")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        public int VehiculoId { get; set; }
     }
 }
