@@ -32,9 +32,6 @@ namespace AutoFleet.Shared.Entities
 
         public bool EstadoDisponibilidad { get; set; }
 
-        // Relación con Recorrido (Punto 4 de tu tarea)
-        // Nota: Si 'Recorrido' no existe aún, Visual Studio mostrará un error.
-        // Puedes comentarlo con // si necesitas que compile ya mismo.
         public ICollection<Recorrido>? Recorridos { get; set; }
     }
 }
