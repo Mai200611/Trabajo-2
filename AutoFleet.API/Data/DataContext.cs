@@ -14,7 +14,7 @@ namespace AutoFleet.API.Data
         public DbSet<Ruta> Rutas { get; set; }
         public DbSet<Recorrido> Recorridos { get; set; }
         public DbSet<Mantenimiento> Mantenimientos { get; set; }
-        public DbSet<Abastecimiento_Combustible> Abastecimientos_Combustible { get; set; }
+        public DbSet<CargaCombustible> CargasCombustible { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

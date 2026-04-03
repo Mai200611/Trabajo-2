@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AutoFleet.Shared.Entities
 {
-    public class Abastecimiento_Combustible
+    public class CargaCombustible
     {
         
         [Display(Name = "Vehiculo")]
