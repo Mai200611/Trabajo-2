@@ -8,38 +8,48 @@ namespace AutoFleet.Shared.Entities
 {
     public class Ruta
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Display(Name = "Código de la ruta")]
-        public int CodRuta { get; set; }
+        [Display(Name = "Codigo de la Ruta")]
+        public int Id { get; set; }
 
-        [Display(Name = "Nombre de la ruta")]
-        [MaxLength(50, ErrorMessage = "The {0} field can not have more than {1} characters.")]
-        [Required(ErrorMessage = "The field {0} is mandatory.")]
+        [Display(Name = "Nombre de la Ruta")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [MaxLength(50, ErrorMessage = "El campo {0} no puede exceder los {1} caracteres.")]
         public string Nombre { get; set; }
 
-        [Display(Name = "Descripción de la ruta")]
-        [MaxLength(250, ErrorMessage = "The {0} field can not have more than {1} characters.")]
+        [Display(Name = "Descripción de la Ruta")]
+        [MaxLength(250, ErrorMessage = "El campo {0} no puede exceder los {1} caracteres.")]
         public string Descripcion { get; set; }
 
-        [Display(Name = "Origen de la ruta")]
-        [MaxLength(50, ErrorMessage = "The {0} field can not have more than {1} characters.")]
+        [Display(Name = "Origen")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [MaxLength(50, ErrorMessage = "El campo {0} no puede exceder los {1} caracteres.")]
         public string Origen { get; set; }
 
-        [Display(Name = "Destino de la ruta")]
-        [MaxLength(50, ErrorMessage = "The {0} field can not have more than {1} characters.")]
+        [Display(Name = "Destino")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [MaxLength(50, ErrorMessage = "El campo {0} no puede exceder los {1} caracteres.")]
         public string Destino { get; set; }
 
         [Display(Name = "Distancia (km)")]
-        [Range(0, double.MaxValue, ErrorMessage = "La distancia debe ser positiva.")]
-        public double Distancia { get; set; }
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [Range(0.01, double.MaxValue, ErrorMessage = "El campo {0} debe ser mayor que {1}.")]
+        [Column(TypeName = "decimal(8,2)")]
+        public decimal Distancia { get; set; }
 
-        [Display(Name = "Duración")]
+        [Display(Name = "Duración Estimada")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public TimeSpan Duracion { get; set; }
 
-        [Display(Name = "Tipo de servicio")]
-        [MaxLength(50, ErrorMessage = "The {0} field can not have more than {1} characters.")]
+        [Display(Name = "Tipo de Servicio")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [MaxLength(50, ErrorMessage = "El campo {0} no puede exceder los {1} caracteres.")]
         public string TipoServicio { get; set; }
+
+
+        // Relaciones
+
+        public ICollection<Recorrido> Recorridos { get; set; }
+
     }
 }
 

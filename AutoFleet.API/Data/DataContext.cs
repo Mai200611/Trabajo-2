@@ -14,20 +14,20 @@ namespace AutoFleet.API.Data
         public DbSet<Ruta> Rutas { get; set; }
         public DbSet<Recorrido> Recorridos { get; set; }
         public DbSet<Mantenimiento> Mantenimientos { get; set; }
-        public DbSet<Abastecimiento_Combustible> Abastecimientos_Combustible { get; set; }
+        public DbSet<CargaCombustible> CargasCombustible { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Ruta>(entity =>
             {
-                entity.HasKey(r => r.CodRuta);
-                entity.Property(r => r.CodRuta).ValueGeneratedOnAdd();
+                entity.HasKey(r => r.Id);
+                entity.Property(r => r.Id).ValueGeneratedOnAdd();
             });
 
             modelBuilder.Entity<Recorrido>(entity =>
             {
-                entity.HasKey(r => r.CodRecorrido);
-                entity.Property(r => r.CodRecorrido).ValueGeneratedOnAdd();
+                entity.HasKey(r => r.Id);
+                entity.Property(r => r.Id).ValueGeneratedOnAdd();
             });
 
             base.OnModelCreating(modelBuilder);
