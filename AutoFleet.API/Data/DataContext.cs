@@ -26,8 +26,8 @@ namespace AutoFleet.API.Data
 
             modelBuilder.Entity<Recorrido>(entity =>
             {
-                entity.HasKey(r => r.CodRecorrido);
-                entity.Property(r => r.CodRecorrido).ValueGeneratedOnAdd();
+                entity.HasKey(r => r.CodigoRecorrido);
+                entity.Property(r => r.CodigoRecorrido).ValueGeneratedOnAdd();
             });
 
             base.OnModelCreating(modelBuilder);
