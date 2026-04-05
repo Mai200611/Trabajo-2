@@ -30,11 +30,6 @@ namespace AutoFleet.API.Data
                 entity.Property(r => r.Id).ValueGeneratedOnAdd();
             });
 
-
-                entity.HasKey(r => r.CodRuta);
-                entity.Property(r => r.CodRuta).ValueGeneratedOnAdd();
-            });
-
             modelBuilder.Entity<Vehiculo>() //que la placa sea única
                 .HasIndex(v => v.Placa)
                 .IsUnique();
