@@ -20,7 +20,6 @@ namespace AutoFleet.API.Data
         {
             modelBuilder.Entity<Ruta>(entity =>
             {
-<<<<<<< HEAD
                 entity.HasKey(r => r.Id);
                 entity.Property(r => r.Id).ValueGeneratedOnAdd();
             });
@@ -31,7 +30,7 @@ namespace AutoFleet.API.Data
                 entity.Property(r => r.Id).ValueGeneratedOnAdd();
             });
 
-=======
+
                 entity.HasKey(r => r.CodRuta);
                 entity.Property(r => r.CodRuta).ValueGeneratedOnAdd();
             });
@@ -43,15 +42,12 @@ namespace AutoFleet.API.Data
             modelBuilder.Entity<Conductor>() //que el número de Licencia sea único
                 .HasIndex(c => c.Licencia)
                 .IsUnique();
->>>>>>> parent of 8531a02 (Fetch de Main)
+
             base.OnModelCreating(modelBuilder);
         }
     }
 }
-<<<<<<< HEAD
 
 
 
 
-=======
->>>>>>> parent of 8531a02 (Fetch de Main)
