@@ -23,6 +23,13 @@ namespace AutoFleet.API.Data
                 entity.Property(r => r.CodRuta).ValueGeneratedOnAdd();
             });
 
+            modelBuilder.Entity<Vehiculo>() //que la placa sea única
+                .HasIndex(v => v.Placa)
+                .IsUnique();
+
+            modelBuilder.Entity<Conductor>() //que el número de Licencia sea único
+                .HasIndex(c => c.Licencia)
+                .IsUnique();
             base.OnModelCreating(modelBuilder);
         }
     }
