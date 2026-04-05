@@ -35,7 +35,7 @@ namespace AutoFleet.API.Data
                 .IsUnique();
 
             modelBuilder.Entity<Conductor>() //que el número de Licencia sea único
-                .HasIndex(c => c.Licencia)
+                .HasIndex(c => c.LicenciaNumero)
                 .IsUnique();
 
             base.OnModelCreating(modelBuilder);
