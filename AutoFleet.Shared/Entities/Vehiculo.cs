@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace AutoFleet.Shared.Entities
 {
@@ -51,8 +52,11 @@ namespace AutoFleet.Shared.Entities
 
         // Relaciones
 
-        public ICollection<Recorrido> Recorridos { get; set; } = new List<Recorrido>(); 
+        [JsonIgnore]
+        public ICollection<Recorrido> Recorridos { get; set; } = new List<Recorrido>();
+        [JsonIgnore]
         public ICollection<Mantenimiento> Mantenimientos { get; set; } = new List<Mantenimiento>();
+        [JsonIgnore]
         public ICollection<CargaCombustible> CargasCombustible { get; set; } = new List<CargaCombustible>();
         //Inicializados para que no pida foraenas en el json.
 

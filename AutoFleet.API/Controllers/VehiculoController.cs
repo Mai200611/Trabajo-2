@@ -82,7 +82,7 @@ namespace AutoFleet.API.Controllers
             return NoContent();
         }
 
-        //Borrar un vehículo
+        // Borrar un vehículo
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteVehiculo(int id)
         {
@@ -97,7 +97,7 @@ namespace AutoFleet.API.Controllers
             return NoContent();
         }
 
-        // Método auxiliar para saber si el vehículo existe
+        // Metodo auxiliar para saber si el vehículo existe
         private bool VehiculoExists(int id)
         {
             return _context.Vehiculos.Any(e => e.Id == id);
