@@ -46,7 +46,7 @@ namespace AutoFleet.Shared.Entities
         // Relaciones
 
         [JsonIgnore]
-        public Vehiculo Vehiculo { get; set; }
+        public Vehiculo? Vehiculo { get; set; }
 
         [Display(Name = "Codigo del Vehiculo")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
