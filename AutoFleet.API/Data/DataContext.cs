@@ -1,4 +1,4 @@
-﻿Cusing Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using AutoFleet.Shared.Entities;
 
 namespace AutoFleet.API.Data
