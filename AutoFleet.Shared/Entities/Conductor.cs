@@ -49,6 +49,6 @@ namespace AutoFleet.Shared.Entities
         //Relaciones
 
         [JsonIgnore]
-        public ICollection<Recorrido>? Recorridos { get; set; }
+        public ICollection<Recorrido> Recorridos { get; set; } = new List<Recorrido>();
     }
 }
