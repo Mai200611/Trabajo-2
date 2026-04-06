@@ -51,7 +51,10 @@ namespace AutoFleet.Shared.Entities
 
         // Relaciones
 
-        public ICollection<Recorrido> Recorridos { get; set; }
-        public virtual ICollection<Mantenimiento> Mantenimientos { get; set; }
+        public ICollection<Recorrido> Recorridos { get; set; } = new List<Recorrido>(); 
+        public ICollection<Mantenimiento> Mantenimientos { get; set; } = new List<Mantenimiento>();
+        public ICollection<CargaCombustible> CargasCombustible { get; set; } = new List<CargaCombustible>();
+        //Inicializados para que no pida foraenas en el json.
+
     }
 }

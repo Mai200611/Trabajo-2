@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace AutoFleet.Shared.Entities
 {
@@ -48,7 +49,8 @@ namespace AutoFleet.Shared.Entities
 
         // Relaciones
 
-        public ICollection<Recorrido> Recorridos { get; set; }
+        [JsonIgnore]
+        public ICollection<Recorrido> Recorridos { get; set; } = new List<Recorrido>();
 
     }
 }
