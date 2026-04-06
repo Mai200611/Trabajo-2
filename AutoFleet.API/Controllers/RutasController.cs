@@ -25,7 +25,7 @@ namespace AutoFleet.API.Controllers
             return Ok(rutas);
         }
 
-        [HttpGet("{CodeRuta:int}")]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<Ruta>> GetRuta(int id)
         {
             var ruta = await _context.Rutas.FindAsync(id);
@@ -35,10 +35,18 @@ namespace AutoFleet.API.Controllers
 
         [HttpPost]
         public async Task<ActionResult> Post(Ruta ruta)
-        {
+        { 
+            
+            //Comprobar si ya existe el Id
+            var existe = await _context.Rutas.AnyAsync(r => r.Id == ruta.Id);
+            if (existe)
+            {
+                return Conflict(new { mensaje = $"La ruta con ID {ruta.Id} ya existe." });
+            }
+
             _context.Rutas.Add(ruta);
             await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetRuta), new { id = ruta.Id }, ruta);
+            return Ok(ruta);
         }
 
     }

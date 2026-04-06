@@ -28,7 +28,7 @@ namespace AutoFleet.Shared.Entities
 
         [Display(Name = "Costo del Mantenimiento")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        [Range(0, 99999999.99, ErrorMessage = "El {0} debe estar entre {1} y {2}.")]
+        [Range(0, double.MaxValue, ErrorMessage = "El {0} debe estar entre {1} y {2}.")]
         [Column(TypeName = "decimal(12,2)")]
         public decimal Costo { get; set; }
 
