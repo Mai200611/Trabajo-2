@@ -22,7 +22,7 @@ namespace AutoFleet.API.Controllers
         }
 
         // Read: Obtener un solo vehículo por su ID 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<Vehiculo>> GetVehiculo(int id)
         {
             var vehiculo = await _context.Vehiculos.FindAsync(id);
@@ -40,6 +40,7 @@ namespace AutoFleet.API.Controllers
         public async Task<ActionResult<Vehiculo>> PostVehiculo(Vehiculo vehiculo)
         {
             _context.Vehiculos.Add(vehiculo);
+            
             try
             {
                 await _context.SaveChangesAsync();
@@ -54,7 +55,7 @@ namespace AutoFleet.API.Controllers
         }
 
         //Modificar un vehículo existente
-        [HttpPut("{id}")]
+        [HttpPut("{id:int}")]
         public async Task<IActionResult> PutVehiculo(int id, Vehiculo vehiculo)
         {
             if (id != vehiculo.Id)
@@ -83,7 +84,7 @@ namespace AutoFleet.API.Controllers
         }
 
         // Borrar un vehículo
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteVehiculo(int id)
         {
             var vehiculo = await _context.Vehiculos.FindAsync(id);
