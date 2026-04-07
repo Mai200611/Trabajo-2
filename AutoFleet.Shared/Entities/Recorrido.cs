@@ -11,7 +11,6 @@ namespace AutoFleet.Shared.Entities
     {
 
         [Display(Name = "Código del recorrido")]
-        [MaxLength(50, ErrorMessage = "El campo {0} no puede exceder los {1} caracteres.")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public int Id { get; set; }
 
@@ -28,13 +27,11 @@ namespace AutoFleet.Shared.Entities
         public TimeOnly HoraLlegada { get; set; }
 
         [Display(Name = "Kilometraje inicial")]
-        [MaxLength(7, ErrorMessage = "El campo {0} no puede exceder los {1} caracteres.")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public int KmInicial { get; set; }
 
 
         [Display(Name = "Kilometraje final")]
-        [MaxLength(7, ErrorMessage = "El campo {0} no puede exceder los {1} caracteres.")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public int KmFinal { get; set; }
 
@@ -47,21 +44,21 @@ namespace AutoFleet.Shared.Entities
         // Relaciones
 
         [JsonIgnore]
-        public Ruta Ruta { get; set; }
+        public Ruta? Ruta { get; set; }
 
         [Display(Name = "Codigo de Ruta")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public int RutaId { get; set; }
 
         [JsonIgnore]
-        public Vehiculo Vehiculo { get; set; }
+        public Vehiculo? Vehiculo { get; set; }
 
         [Display(Name = "Codigo del Vehiculo")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public int VehiculoId { get; set; }
 
         [JsonIgnore]
-        public Conductor Conductor { get; set; }
+        public Conductor? Conductor { get; set; }
 
         [Display(Name = "Codigo del Conductor")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]

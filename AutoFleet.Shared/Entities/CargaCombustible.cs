@@ -9,7 +9,6 @@ namespace AutoFleet.Shared.Entities
 {
     public class CargaCombustible
     {
-
         public int Id { get; set; }
 
         [Display(Name = "Fecha de Carga/Tanqueo")]
@@ -41,7 +40,7 @@ namespace AutoFleet.Shared.Entities
         // Relaciones
 
         [JsonIgnore]
-        public Vehiculo Vehiculo { get; set; }
+        public Vehiculo? Vehiculo { get; set; }
 
         [Display(Name = "Id Vehiculo")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
