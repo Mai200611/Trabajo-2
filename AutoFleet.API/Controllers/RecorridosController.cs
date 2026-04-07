@@ -20,11 +20,8 @@ namespace AutoFleet.API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Recorrido>>> GetRecorridos()
         {
-            var recorridos = await _context.Recorridos
-                .Include(r => r.Vehiculo)
-                .Include(r => r.Conductor)
-                .Include(r => r.Ruta)
-                .ToListAsync();
+
+            var recorridos = await _context.Recorridos.ToListAsync();
             return Ok(recorridos);
         }
 
@@ -32,11 +29,7 @@ namespace AutoFleet.API.Controllers
         [HttpGet("{id:int}")]
         public async Task<ActionResult<Recorrido>> GetRecorrido(int id)
         {
-            var recorrido = await _context.Recorridos
-                .Include(r => r.Vehiculo)
-                .Include(r => r.Conductor)
-                .Include(r => r.Ruta)
-                .FirstOrDefaultAsync(r => r.Id == id);
+            var recorrido = await _context.Recorridos.FindAsync(id);
 
             if (recorrido == null)
             {
@@ -46,50 +39,11 @@ namespace AutoFleet.API.Controllers
             return Ok(recorrido);
         }
 
-        // GET: api/Recorridos/vehiculo/{vehiculoId}
-        [HttpGet("vehiculo/{vehiculoId:int}")]
-        public async Task<ActionResult<IEnumerable<Recorrido>>> GetRecorridosPorVehiculo(int vehiculoId)
-        {
-            var vehiculoExiste = await _context.Vehiculos.AnyAsync(v => v.Id == vehiculoId);
-            if (!vehiculoExiste)
-            {
-                return NotFound(new { mensaje = $"El vehículo con ID {vehiculoId} no existe." });
-            }
-
-            var recorridos = await _context.Recorridos
-                .Include(r => r.Vehiculo)
-                .Include(r => r.Conductor)
-                .Include(r => r.Ruta)
-                .Where(r => r.VehiculoId == vehiculoId)
-                .ToListAsync();
-
-            return Ok(recorridos);
-        }
-
-        // GET: api/Recorridos/conductor/{conductorId}
-        [HttpGet("conductor/{conductorId:int}")]
-        public async Task<ActionResult<IEnumerable<Recorrido>>> GetRecorridosPorConductor(int conductorId)
-        {
-            var conductorExiste = await _context.Conductores.AnyAsync(c => c.Id == conductorId);
-            if (!conductorExiste)
-            {
-                return NotFound(new { mensaje = $"El conductor con ID {conductorId} no existe." });
-            }
-
-            var recorridos = await _context.Recorridos
-                .Include(r => r.Vehiculo)
-                .Include(r => r.Conductor)
-                .Include(r => r.Ruta)
-                .Where(r => r.ConductorId == conductorId)
-                .ToListAsync();
-
-            return Ok(recorridos);
-        }
-
         // POST: api/Recorridos
         [HttpPost]
         public async Task<ActionResult<Recorrido>> PostRecorrido(Recorrido recorrido)
         {
+
             // Verificar si ya existe un recorrido con ese ID
             var existe = await _context.Recorridos.AnyAsync(r => r.Id == recorrido.Id);
             if (existe)
@@ -118,19 +72,8 @@ namespace AutoFleet.API.Controllers
                 return BadRequest(new { mensaje = $"La ruta con ID {recorrido.RutaId} no existe." });
             }
 
-            // Validar que la hora de llegada sea después de la hora de salida
-            if (recorrido.HoraLlegada <= recorrido.HoraSalida)
-            {
-                return BadRequest(new { mensaje = "La hora de llegada debe ser posterior a la hora de salida." });
-            }
-
-            // Validar que el kilometraje final sea mayor o igual al inicial
-            if (recorrido.KmFinal < recorrido.KmInicial)
-            {
-                return BadRequest(new { mensaje = "El kilometraje final debe ser mayor o igual al kilometraje inicial." });
-            }
-
             _context.Recorridos.Add(recorrido);
+
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetRecorrido), new { id = recorrido.Id }, recorrido);
@@ -172,18 +115,6 @@ namespace AutoFleet.API.Controllers
             if (!rutaExiste)
             {
                 return BadRequest(new { mensaje = $"La ruta con ID {recorrido.RutaId} no existe." });
-            }
-
-            // Validar que la hora de llegada sea después de la hora de salida
-            if (recorrido.HoraLlegada <= recorrido.HoraSalida)
-            {
-                return BadRequest(new { mensaje = "La hora de llegada debe ser posterior a la hora de salida." });
-            }
-
-            // Validar que el kilometraje final sea mayor o igual al inicial
-            if (recorrido.KmFinal < recorrido.KmInicial)
-            {
-                return BadRequest(new { mensaje = "El kilometraje final debe ser mayor o igual al kilometraje inicial." });
             }
 
             // Marcar la entidad como modificada

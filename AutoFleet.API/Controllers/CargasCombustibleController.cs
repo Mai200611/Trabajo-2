@@ -20,9 +20,7 @@ namespace AutoFleet.API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CargaCombustible>>> GetCargasCombustible()
         {
-            var consumos = await _context.CargasCombustible
-                .Include(c => c.Vehiculo)
-                .ToListAsync();
+            var consumos = await _context.CargasCombustible.ToListAsync();
             return Ok(consumos);
         }
 
@@ -30,9 +28,7 @@ namespace AutoFleet.API.Controllers
         [HttpGet("{id:int}")]
         public async Task<ActionResult<CargaCombustible>> GetCargaCombustible(int id)
         {
-            var consumo = await _context.CargasCombustible
-                .Include(c => c.Vehiculo)
-                .FirstOrDefaultAsync(c => c.Id == id);
+            var consumo = await _context.CargasCombustible.FindAsync(id);
 
             if (consumo == null)
             {
@@ -88,12 +84,6 @@ namespace AutoFleet.API.Controllers
             if (!vehiculoExiste)
             {
                 return BadRequest(new { mensaje = $"El vehículo con ID {consumo.VehiculoId} no existe." });
-            }
-
-            // Validar que el kilometraje sea válido
-            if (consumo.Kilometraje < 0)
-            {
-                return BadRequest(new { mensaje = "El kilometraje no puede ser negativo." });
             }
 
             // Marcar la entidad como modificada
