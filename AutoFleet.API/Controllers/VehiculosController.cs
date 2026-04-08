@@ -18,7 +18,7 @@ namespace AutoFleet.API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Vehiculo>>> GetVehiculos()
         {
-            return await _context.Vehiculos.ToListAsync();
+            return await _context.Vehiculos.Where(v => !v.IsDeleted).ToListAsync();
         }
 
         // Read: Obtener un solo vehículo por su ID 
@@ -92,10 +92,16 @@ namespace AutoFleet.API.Controllers
             {
                 return NotFound("El vehículo no existe.");
             }
-            _context.Vehiculos.Remove(vehiculo);
+            vehiculo.IsDeleted = true; // Marcar como eliminado en lugar de eliminar físicamente
             await _context.SaveChangesAsync();
 
             return NoContent();
+        }
+        [HttpGet("deleted")]
+        public async Task<ActionResult<IEnumerable<Vehiculo>>> GetVehiculosBorrados()
+        {
+            // Lista de vehículos marcados como eliminados
+            return await _context.Vehiculos.Where(v => v.IsDeleted).ToListAsync();
         }
 
         // Metodo auxiliar para saber si el vehículo existe
