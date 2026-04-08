@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AutoFleet.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20260406213624_MigracionOficialYefer")]
-    partial class MigracionOficialYefer
+    [Migration("20260408043920_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -157,7 +157,6 @@ namespace AutoFleet.API.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasMaxLength(50)
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
@@ -175,11 +174,9 @@ namespace AutoFleet.API.Migrations
                         .HasColumnType("time");
 
                     b.Property<int>("KmFinal")
-                        .HasMaxLength(7)
                         .HasColumnType("int");
 
                     b.Property<int>("KmInicial")
-                        .HasMaxLength(7)
                         .HasColumnType("int");
 
                     b.Property<string>("Observaciones")
@@ -267,6 +264,9 @@ namespace AutoFleet.API.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<float>("KilometrajeActual")
                         .HasColumnType("real");
 
@@ -301,7 +301,7 @@ namespace AutoFleet.API.Migrations
             modelBuilder.Entity("AutoFleet.Shared.Entities.CargaCombustible", b =>
                 {
                     b.HasOne("AutoFleet.Shared.Entities.Vehiculo", "Vehiculo")
-                        .WithMany()
+                        .WithMany("CargasCombustible")
                         .HasForeignKey("VehiculoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -359,6 +359,8 @@ namespace AutoFleet.API.Migrations
 
             modelBuilder.Entity("AutoFleet.Shared.Entities.Vehiculo", b =>
                 {
+                    b.Navigation("CargasCombustible");
+
                     b.Navigation("Mantenimientos");
 
                     b.Navigation("Recorridos");

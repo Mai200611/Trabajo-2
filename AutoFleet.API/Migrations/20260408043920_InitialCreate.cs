@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AutoFleet.API.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialDb : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -63,7 +63,8 @@ namespace AutoFleet.API.Migrations
                     Año = table.Column<int>(type: "int", nullable: false),
                     CapacidadCargaKg = table.Column<float>(type: "real", nullable: false),
                     EstadoOperativo = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    KilometrajeActual = table.Column<float>(type: "real", nullable: false)
+                    KilometrajeActual = table.Column<float>(type: "real", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -123,13 +124,13 @@ namespace AutoFleet.API.Migrations
                 name: "Recorridos",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", maxLength: 50, nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
                     HoraSalida = table.Column<TimeOnly>(type: "time", nullable: false),
                     HoraLlegada = table.Column<TimeOnly>(type: "time", nullable: false),
-                    KmInicial = table.Column<int>(type: "int", maxLength: 7, nullable: false),
-                    KmFinal = table.Column<int>(type: "int", maxLength: 7, nullable: false),
+                    KmInicial = table.Column<int>(type: "int", nullable: false),
+                    KmFinal = table.Column<int>(type: "int", nullable: false),
                     Observaciones = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     RutaId = table.Column<int>(type: "int", nullable: false),
                     VehiculoId = table.Column<int>(type: "int", nullable: false),

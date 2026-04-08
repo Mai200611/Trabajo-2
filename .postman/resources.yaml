@@ -1,0 +1,7 @@
+# Use this workspace to collaborate
+workspace:
+  id: ec47ced5-d7bc-4892-88ee-9ed1ba3c1d2e
+
+localResources:
+  specs:
+    - ..\AutoFleet.API\obj\Debug\net10.0\EndpointInfo\AutoFleet.API.json

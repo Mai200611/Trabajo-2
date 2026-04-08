@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AutoFleet.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20260408033827_AddIsDeletedToVehiculo")]
-    partial class AddIsDeletedToVehiculo
+    [Migration("20260408044531_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

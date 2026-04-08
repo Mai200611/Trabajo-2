@@ -21,8 +21,4 @@
     <ProjectReference Include="..\AutoFleet.Shared\AutoFleet.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
-
 </Project>

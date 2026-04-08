@@ -30,6 +30,10 @@ namespace AutoFleet.API.Data
                 entity.Property(r => r.Id).ValueGeneratedOnAdd();
             });
 
+            modelBuilder.Entity<CargaCombustible>()
+                .Property(c => c.CantidadCombustible)
+                .HasColumnType("decimal(18,2)");
+
             modelBuilder.Entity<Vehiculo>() //que la placa sea única
                 .HasIndex(v => v.Placa)
                 .IsUnique();
